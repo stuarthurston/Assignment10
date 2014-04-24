@@ -1,10 +1,4 @@
-/**
- * Representation of a single playing card (from a standard 52 card deck). 
- * A card consists of a suit value and a rank value.  Once instantiated, the
- * Card object cannot change.
- *
- * @Jackie Horton
- */
+
 
 public class Card 
 {     
