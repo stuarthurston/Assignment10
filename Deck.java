@@ -13,7 +13,7 @@ public class Deck
    public void freshDeck()
    {
       deck = new ArrayList<Card>();
-      System.out.println(deck.size());
+      
 
       for (int r = Card.ACE; r<=Card.KING;r++)
       {
