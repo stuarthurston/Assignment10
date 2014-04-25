@@ -4,14 +4,14 @@ public class DeckDriver
    {
       // for (int i = 0; i < args.length;i++)
 //          // System.out.println(args[i]);
-      Deck deck = new Deck();
+      WarDeck deck = new WarDeck();
       displayDeck(deck);
       deck.freshDeck();
       deck.shuffle();
       int i = 0;
       displayDeck(deck);
    }
-   public static void displayDeck(Deck d)
+   public static void displayDeck(WarDeck d)
    {
       int i = 0;
       while (!(d.isEmpty()))
