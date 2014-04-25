@@ -38,7 +38,7 @@ public class Player
    
    
    //////This will be delatead
-      public Card flip2() //Get the card off the top of the "deck"
+      public Card flip2()  //Get the card off the top of the "deck"
    {
       Card topCard2;
       
