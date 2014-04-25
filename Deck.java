@@ -14,14 +14,23 @@ public class Deck
    {
       deck = new ArrayList<Card>();
       
-
-      for (int r = Card.ACE; r<=Card.KING;r++)
-      {
-         for (int s=Card.SPADES;s<=Card.CLUBS;s++)
-         {
-           deck.add(new Card(r,s));
-         }
-      }
+      deck.add(new Card(1,2));
+      deck.add(new Card(2,2));
+      deck.add(new Card(2,3));
+      deck.add(new Card(1,1));
+      deck.add(new Card(2,1));
+      deck.add(new Card(2,4));
+      deck.add(new Card(1,1));
+      deck.add(new Card(2,1));
+      deck.add(new Card(1,1));
+      deck.add(new Card(2,1));
+//       for (int r = Card.ACE; r<=Card.KING;r++)
+//       {
+//          for (int s=Card.SPADES;s<=Card.CLUBS;s++)
+//          {
+//            deck.add(new Card(r,s));
+//          }
+//       }
      
    
    }

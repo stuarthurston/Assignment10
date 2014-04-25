@@ -2,13 +2,15 @@ import java.util.ArrayList;
 
 public class DeckDriver
 {
-   public static void main(String [] args) 
+   public static void main(String [] args) throws IndexOutOfBoundsException 
    {
       // for (int i = 0; i < args.length;i++)
 //          // System.out.println(args[i]);
       Deck deck = new Deck();
-      displayDeck(deck);
+      // displayDeck(deck);
       deck.freshDeck();
+      
+      ArrayList<Card> warDeck  = new ArrayList<Card>(); //This is where the cards from the war will go
       
       Player p1 = new Player();
       Player p2 = new Player();
@@ -23,43 +25,77 @@ public class DeckDriver
       
       
       
-      System.out.println("----");
-      for(int i = 0; i<24; i++)
-      {
-         System.out.print(i + ": ");
-         System.out.println(p1.flip());
-         
+//       System.out.println("----");
+//       for(int i = 0; i<24; i++)
+//       {
+//          System.out.print(i + ": ");
+//          System.out.println(p1.flip());
+//          
+//       }
+//       System.out.println("--nn--");
+//       for(int i = 0; i<24; i++)
+//       {
+//          System.out.print(i + ": ");
+//          System.out.println(p2.flip());
+//          
+//       }
+
+         compare(p1,p2,warDeck);
+
+      try{    
+         System.out.println("Player1");
+         System.out.println(p1.flip2());
+         System.out.println(p1.flip2());
       }
-      System.out.println("--nn--");
-      for(int i = 0; i<24; i++)
+      catch (Exception e)
       {
-         System.out.print(i + ": ");
-         System.out.println(p2.flip());
-         
-      }
-      System.out.println(compare(p1,p2));
+         System.out.println("there was an error -- 1");
+      }      
       
-      System.out.println(p1.flip2());
-       System.out.println(p1.flip2());
+      try{
+         System.out.println("Player2");
+         System.out.println(p2.flip2());
+         System.out.println(p2.flip2());
+      }
+      catch (Exception e)
+      {
+         System.out.println("there was an error -- 2");
+      }  
+      
       int i = 0;
-      displayDeck(deck);
+      
    }
 
    
-   public static ArrayList<Card> compare(Player pl1, Player pl2) //Compare two cards, return array List
+   public static void compare(Player pl1, Player pl2, ArrayList<Card> warDeck) //Compare two cards, return array List
    {
-      ArrayList<Card> warDeck  = new ArrayList<Card>();
       Card card1 = pl1.flip();
       Card card2 = pl2.flip();
       
       if(card1.getRank() > card2.getRank())
       {
-
+         if(!warDeck.isEmpty())
+         {
+            for(Card item : warDeck)
+            {
+               pl1.addReturn(item);
+            }
+            warDeck.clear();  
+         }
          pl1.addReturn(card1); //Add both the cards to player 1, winner
          pl1.addReturn(card2);
       }
+      
       else if(card1.getRank() < card2.getRank())
       {
+         if(!warDeck.isEmpty())
+         {
+            for(Card item : warDeck)
+            {
+               pl2.addReturn(item);
+            }
+            warDeck.clear();  
+         }
          pl2.addReturn(card1); //Add both the cards to player 2, winner
          pl2.addReturn(card2); 
       }
@@ -70,8 +106,14 @@ public class DeckDriver
          warDeck.add(card2);
          warDeck.add(pl1.flip());
          warDeck.add(pl2.flip());
+           
+         while(!warDeck.isEmpty())//While wardeck is not empty
+         {
+            compare(pl1,pl2,warDeck); 
+         }
+         
       }
-      return warDeck;     
+         
    }
    
    
