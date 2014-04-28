@@ -12,8 +12,10 @@ import java.util.ArrayList;
 public class Player
 {
    //Create two decks, one to hold the players cards, the other to hold the cards won.
-   ArrayList<Card> playDeck  = new ArrayList<Card>(); 
-   ArrayList<Card> returnDeck = new ArrayList<Card>();
+   // ArrayList<Card> playDeck  = new ArrayList<Card>(); 
+//    ArrayList<Card> returnDeck = new ArrayList<Card>();
+   Deck playDeck  = new Deck(); 
+   Deck returnDeck = new Deck();
    
    public void addPlay(Card inCard) //Add cards to the playDeck
    {
@@ -73,8 +75,10 @@ public class Player
    {
     for(Card object : returnDeck)
     {
+      
       playDeck.add(object);
     }
+    playDeck.shuffle();
     returnDeck.clear();  
    } 
 }
