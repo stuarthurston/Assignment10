@@ -4,14 +4,14 @@ public class DeckDriver
 {
    public static void main(String [] args) throws IndexOutOfBoundsException 
    {
-      // for (int i = 0; i < args.length;i++)
-//          // System.out.println(args[i]);
-      Deck deck = new Deck();
-      // displayDeck(deck);
+      //Create a deck object, and add 52 cards to the deck
+      Deck deck = new Deck(); 
       deck.freshDeck();
       
-      ArrayList<Card> warDeck  = new ArrayList<Card>(); //This is where the cards from the war will go
+      //This is where the cards from the war will go
+      ArrayList<Card> warDeck  = new ArrayList<Card>(); 
       
+      //Create two players and shuffel the deck
       Player p1 = new Player();
       Player p2 = new Player();
       deck.shuffle();
@@ -23,29 +23,27 @@ public class DeckDriver
          p2.addPlay(deck.dealCard());
       }
       
+      ShowWindow my = new ShowWindow(p1,p2,warDeck);
       
+      flipPlay(p1,p2,warDeck);
+      flipPlay(p1,p2,warDeck);
+      flipPlay(p1,p2,warDeck);
+      flipPlay(p1,p2,warDeck);
+      flipPlay(p1,p2,warDeck);
+      flipPlay(p1,p2,warDeck);
+      flipPlay(p1,p2,warDeck);
+      flipPlay(p1,p2,warDeck);
+      flipPlay(p1,p2,warDeck);
+      flipPlay(p1,p2,warDeck);
+      flipPlay(p1,p2,warDeck);
+      flipPlay(p1,p2,warDeck); 
       
-//       System.out.println("----");
-//       for(int i = 0; i<24; i++)
-//       {
-//          System.out.print(i + ": ");
-//          System.out.println(p1.flip());
-//          
-//       }
-//       System.out.println("--nn--");
-//       for(int i = 0; i<24; i++)
-//       {
-//          System.out.print(i + ": ");
-//          System.out.println(p2.flip());
-//          
-//       }
-
-         compare(p1,p2,warDeck);
-
       try{    
          System.out.println("Player1");
-         System.out.println(p1.flip2());
-         System.out.println(p1.flip2());
+         for(int i=0;i<15;i++)
+         {
+            System.out.println(p1.flip2());
+         }
       }
       catch (Exception e)
       {
@@ -111,9 +109,7 @@ public class DeckDriver
          {
             compare(pl1,pl2,warDeck); 
          }
-         
-      }
-         
+      }    
    }
    
    
@@ -122,6 +118,20 @@ public class DeckDriver
       int i = 0;
       while (!(d.isEmpty()))
          System.out.println(i++ + " : " + d.dealCard().toString());
-  
+   }
+   
+   public static void flipPlay(Player p1, Player p2, ArrayList<Card> warDeck)
+   {
+         if(p1.getPlayDeck() == 0)
+         {
+            p1.moveCards();
+         }
+         
+         if(p2.getPlayDeck() == 0)
+         {
+            p2.moveCards();
+         }
+         
+         compare(p1,p2,warDeck); 
    }
 }
