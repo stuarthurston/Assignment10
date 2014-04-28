@@ -108,7 +108,7 @@ public class Card
 
     public String toString() 
     {
-        return getSuitAsString();
+        return getRankAsString() + getSuitAsString();
     }
     
    /**
