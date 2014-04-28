@@ -25,13 +25,20 @@ public class Player
       returnDeck.add(inCard);
    }
    
-   public Card flip() //Get the card off the top of the "deck"
+   public Card flip() //Get the card off the top of the "deck", and remove
    {
       Card topCard;
       topCard = playDeck.get(0); //Get the card at element 0, and then delete it.
       playDeck.remove(0);
       return topCard;
    }  
+   
+   public Card getTopCard() //Get the card off the top, DO NOT Delete
+   {
+      Card topCard;
+      topCard = playDeck.get(0);
+      return topCard;
+   }
    
    public int getPlayDeck() //Get the size of the play deck
    {
