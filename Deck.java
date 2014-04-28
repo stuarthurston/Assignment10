@@ -14,16 +14,16 @@ public class Deck extends ArrayList<Card>
    {
       deck = new ArrayList<Card>();
       
-      // deck.add(new Card(1,2));
+//       deck.add(new Card(1,2));
 //       deck.add(new Card(2,2));
-//       deck.add(new Card(2,3));
+//       deck.add(new Card(3,3));
 //       deck.add(new Card(1,1));
 //       deck.add(new Card(2,1));
-//       deck.add(new Card(2,0));
+//       deck.add(new Card(3,0));
 //       deck.add(new Card(1,1));
 //       deck.add(new Card(2,1));
+//       deck.add(new Card(3,1));
 //       deck.add(new Card(1,1));
-//       deck.add(new Card(2,1));
       for (int r = 2; r<=Card.ACE;r++)
       {
          for (int s=Card.SPADES;s<=Card.CLUBS;s++)

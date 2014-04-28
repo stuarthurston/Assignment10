@@ -29,25 +29,38 @@ public class Player
    
    public Card flip() //Get the card off the top of the "deck", and remove
    {
-      Card topCard;
-      topCard = playDeck.get(0); //Get the card at element 0, and then delete it.
-      playDeck.remove(0);
+      Card topCard = null;
+      
+      if(getPlayDeck() == 0)
+      {
+            moveCards();
+      }
+      
+      if(!(getPlayDeck() == 0))
+      {
+         topCard = playDeck.get(0); //Get the card at element 0, and then delete it.
+         playDeck.remove(0);
+      }
+      
       return topCard;
    }  
    
    public Card getTopCard() //Get the card off the top, DO NOT Delete
    {
+      Card topCard = null;
+      
+      
       if(getPlayDeck() == 0)
-         {
+      {         
             moveCards();
-         }
+
+      }
          
-         if(getPlayDeck() == 0)
-         {
-            moveCards();
-         }
-      Card topCard;
-      topCard = playDeck.get(0);
+      if(!(getPlayDeck() == 0))
+      {
+         topCard = playDeck.get(0);
+      }
+      
       return topCard;
    }
    
