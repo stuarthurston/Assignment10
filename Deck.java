@@ -14,23 +14,23 @@ public class Deck
    {
       deck = new ArrayList<Card>();
       
-      deck.add(new Card(1,2));
-      deck.add(new Card(2,2));
-      deck.add(new Card(2,3));
-      deck.add(new Card(1,1));
-      deck.add(new Card(2,1));
-      deck.add(new Card(2,4));
-      deck.add(new Card(1,1));
-      deck.add(new Card(2,1));
-      deck.add(new Card(1,1));
-      deck.add(new Card(2,1));
-//       for (int r = Card.ACE; r<=Card.KING;r++)
-//       {
-//          for (int s=Card.SPADES;s<=Card.CLUBS;s++)
-//          {
-//            deck.add(new Card(r,s));
-//          }
-//       }
+//       deck.add(new Card(1,2));
+//       deck.add(new Card(2,2));
+//       deck.add(new Card(2,3));
+//       deck.add(new Card(1,1));
+//       deck.add(new Card(2,1));
+//       deck.add(new Card(2,0));
+//       deck.add(new Card(1,1));
+//       deck.add(new Card(2,1));
+//       deck.add(new Card(1,1));
+//       deck.add(new Card(2,1));
+      for (int r = Card.ACE; r<=Card.KING;r++)
+      {
+         for (int s=Card.SPADES;s<=Card.CLUBS;s++)
+         {
+           deck.add(new Card(r,s));
+         }
+      }
      
    
    }
@@ -60,28 +60,7 @@ public class Deck
    {
       return (deck.size() == 0);
    }
-   // by rank only
-//    public static void main(String [] args) 
-//    {
-//       Deck1 deck = new Deck1();
-//       deck.shuffle();
-//       int i = 0;
-// //      while (deck.cardsRemaining() > 0)
-//       while (!(deck.isEmpty()))
-//          System.out.println(i++ + " : " + deck.dealCard().toString());
-//       System.out.println(deck.cardsRemaining());
-//       deck.freshDeck();
-//       while (!(deck.isEmpty()))
-//          System.out.println(i++ + " : " + deck.dealCard().toString());
-//          
-//       Card c1 = new Card(Card.ACE,Card.HEARTS);
-//       Card c2 = new Card(Card.JACK,Card.SPADES);
-//       Card c3 = new Card(4,Card.HEARTS);
-//       
-//       System.out.println(highCard(c1,c2,c3));
-//       
-// 
-//    }
+
    public static Card highCard(Card...cards)
    {
    
