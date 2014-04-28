@@ -21,9 +21,9 @@ public class War extends JFrame
       private JPanel bottom = new JPanel(new GridLayout(1,3,30,30)); //Caption for cards
       
       //Labels
-      JLabel playerDeck1;
-      JLabel playerDeck2;
-      JLabel result;
+      private JLabel playerDeck1;
+      private JLabel playerDeck2;
+      private JLabel result;
       
       //The background color
       private Color lightPurple = new Color(206,0,113);
@@ -48,8 +48,8 @@ public class War extends JFrame
       private JLabel playerCard2;
       
       //Height and Width of the overall frame
-      private final int WINDOW_WIDTH = 350;
-      private final int WINDOW_HEIGHT = 250;
+      private final int WINDOW_WIDTH = 400;
+      private final int WINDOW_HEIGHT = 300;
    
    public War()
    {
@@ -94,15 +94,13 @@ public class War extends JFrame
       panel.add(gameName, BorderLayout.PAGE_START);
       panel.add(table, BorderLayout.CENTER);
       panel.add(bottom, BorderLayout.PAGE_END);
-      
-      
-      // panel.setBackground(lightPurple);
-      
+
       //Make visible
       this.getContentPane().add(panel);
       pack();
       setVisible(true);
    }
+   
    class exitGame implements ActionListener 
    {
       public void actionPerformed(ActionEvent e) 
@@ -146,9 +144,9 @@ public class War extends JFrame
          flip.addActionListener(new flipCard());
          
          //Create the headings
-         JLabel playerDeck1 = new JLabel("Player 1's Deck: " + p1.totalCards(),SwingConstants.CENTER);
-         JLabel playerDeck2 = new JLabel("Player 2's Deck: " + p2.totalCards(),SwingConstants.CENTER);
-         JLabel result = new JLabel("Click \"Flip Card\" to start the game",SwingConstants.CENTER);
+         playerDeck1 = new JLabel("Player 1's Deck: " + p1.totalCards(),SwingConstants.CENTER);
+         playerDeck2 = new JLabel("Player 2's Deck: " + p2.totalCards(),SwingConstants.CENTER);
+         result = new JLabel("Click \"Flip Card\" to start the game",SwingConstants.CENTER);
          result.setFont(result.getFont().deriveFont(13.0f)); //Format the name/winner
          
          //Add the players information to the stats panel
@@ -166,10 +164,12 @@ public class War extends JFrame
          playerCard1 = new JLabel();
          playerCard2 = new JLabel();
          
+         
          pack();
       
       }
       //End Begin
+   
    
    class flipCard implements ActionListener
    {
@@ -179,37 +179,45 @@ public class War extends JFrame
          table.remove(playerCard1);
          table.remove(playerCard2);
          
+         //Remove the two card Backs
          table.remove(back);
          table.remove(back2);
+         
          //Display the card that is being compared (played)
          player1 = p1.getTopCard();
          player2 = p2.getTopCard();
          playerCard1 = displayCardFace(player1);
 	      playerCard2 = displayCardFace(player2);
-
          
-         
-         
-         
+         //Add items back to table
          table.add(playerCard1);
          table.add(middle);
          table.add(playerCard2);
          
          
          flipPlay(p1,p2,warDeck); //This is what makes eveything happen
-     
+
+         //Remove the 'stats' from the frame
+         stats.remove(playerDeck1);
+         stats.remove(result);
+         stats.remove(playerDeck2);
          
-      
-
-
-         top.remove(stats);
+         
+         // result = new JLabel("This is the result",SwingConstants.CENTER);
+//          result.setFont(result.getFont().deriveFont(13.0f)); //Format the name/winner
          playerDeck1 = new JLabel("Player 1's Deck: " + p1.totalCards(),SwingConstants.CENTER);
          playerDeck2 = new JLabel("Player 2's Deck: " + p2.totalCards(),SwingConstants.CENTER);
          
-         stats.add(playerDeck1);
-         // stats.add(result);
-         stats.add(playerDeck2); 
-         top.add(stats);
+         
+         //Add the elements to 'stats'
+         stats.add(playerDeck1, BorderLayout.WEST);
+         stats.add(result, BorderLayout.CENTER);
+         stats.add(playerDeck2, BorderLayout.EAST);
+         
+         //Add 'stats' into the top panel, top into main
+         top.add(stats, BorderLayout.CENTER);
+         panel.add(top, BorderLayout.PAGE_START);
+         
          pack();         
       }
       
@@ -218,7 +226,7 @@ public class War extends JFrame
       
    } 
    
-   public static void compare(Player pl1, Player pl2, ArrayList<Card> warDeck) //Compare two cards, return array List
+   public  void compare(Player pl1, Player pl2, ArrayList<Card> warDeck) //Compare two cards, return array List
    {
       Card card1 = pl1.flip();
       Card card2 = pl2.flip();
@@ -235,6 +243,11 @@ public class War extends JFrame
          }
          pl1.addReturn(card1); //Add both the cards to player 1, winner
          pl1.addReturn(card2);
+         
+         //Display the winner
+         stats.remove(result);
+         result = new JLabel("Winner: Player 1",SwingConstants.CENTER);
+         result.setFont(result.getFont().deriveFont(13.0f)); //Format the name/winner
       }
       
       else if(card1.getRank() < card2.getRank())
@@ -248,7 +261,12 @@ public class War extends JFrame
             warDeck.clear();  
          }
          pl2.addReturn(card1); //Add both the cards to player 2, winner
-         pl2.addReturn(card2); 
+         pl2.addReturn(card2);
+         
+         //Display the winner
+         stats.remove(result);
+         result = new JLabel("Winner: Player 2",SwingConstants.CENTER);
+         result.setFont(result.getFont().deriveFont(13.0f)); //Format the name/winner 
       }
       
       else if(card1.getRank() == card2.getRank())
@@ -257,7 +275,11 @@ public class War extends JFrame
          warDeck.add(card2);
          warDeck.add(pl1.flip());
          warDeck.add(pl2.flip());
-           
+         
+         //Display the winner
+         stats.remove(result);
+         result = new JLabel("War!!!",SwingConstants.CENTER);
+         result.setFont(result.getFont().deriveFont(13.0f)); //Format the name/winner
          while(!warDeck.isEmpty())//While wardeck is not empty
          {
             compare(pl1,pl2,warDeck); 
@@ -265,7 +287,7 @@ public class War extends JFrame
       }    
    }//End Compare
    
-   public static void flipPlay(Player p1, Player p2, ArrayList<Card> warDeck)
+   public  void flipPlay(Player p1, Player p2, ArrayList<Card> warDeck)
    {
          if(p1.getPlayDeck() == 0)
          {
@@ -279,6 +301,7 @@ public class War extends JFrame
          
          compare(p1,p2,warDeck); 
    }//EndFlipPlay  
+   
       public JLabel displayCardFace(Card card)
       {
 
