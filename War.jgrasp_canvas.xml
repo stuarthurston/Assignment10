@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Canvas xmlns="http://www.jgrasp.org">
+  <Language>Java</Language>
+  <ShowTypes>false</ShowTypes>
+  <Grid>
+    <Snap>true</Snap>
+    <Show>false</Show>
+  </Grid>
+  <Scope id="0">
+    <Name>flipPlay</Name>
+    <Signature>(LPlayer;LPlayer;Ljava/util/ArrayList;)V</Signature>
+    <DeclaringType>War</DeclaringType>
+    <Depth>37</Depth>
+  </Scope>
+  <Frame>
+    <Bounds>
+      <AutoSize>true</AutoSize>
+      <X>70</X>
+      <Y>170</Y>
+      <W>449</W>
+      <H>110</H>
+    </Bounds>
+    <Viewer>
+      <ScopeID>0</ScopeID>
+      <Expression>`local Player` p1.playDeck</Expression>
+      <ViewerClass>java__util__ArrayList_PresentationView</ViewerClass>
+    </Viewer>
+  </Frame>
+  <Frame>
+    <Bounds>
+      <AutoSize>true</AutoSize>
+      <X>30</X>
+      <Y>50</Y>
+      <W>60</W>
+      <H>44</H>
+    </Bounds>
+    <LabelLoc>
+      <WO>false</WO>
+    </LabelLoc>
+    <Viewer>
+      <ScopeID>0</ScopeID>
+      <Expression>((java.util.ArrayList) `local Player` p1.playDeck).size</Expression>
+      <ViewerClass>_X_ElementView</ViewerClass>
+    </Viewer>
+  </Frame>
+  <Size>
+    <W>705</W>
+    <H>384</H>
+  </Size>
+  <ESize>
+    <W>705</W>
+    <H>384</H>
+  </ESize>
+</Canvas>

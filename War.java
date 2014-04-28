@@ -167,8 +167,7 @@ public class War extends JFrame
          
          pack();
       
-      }
-      //End Begin
+      }//End Begin
    
    
    class flipCard implements ActionListener
@@ -183,6 +182,20 @@ public class War extends JFrame
          table.remove(back);
          table.remove(back2);
          
+         //Make sure neither player has no cards left
+         if(p1.totalCards() == 0)
+         {
+            stats.remove(result);
+            result = new JLabel("PLAYER 2 WINS",SwingConstants.CENTER);
+            result.setFont(result.getFont().deriveFont(13.0f)); //Format the name/winner  
+         }
+         if(p2.totalCards() == 0)
+         {
+            stats.remove(result);
+            result = new JLabel("PLAYER 1 WINS",SwingConstants.CENTER);
+            result.setFont(result.getFont().deriveFont(13.0f)); //Format the name/winner  
+         }
+         
          //Display the card that is being compared (played)
          player1 = p1.getTopCard();
          player2 = p2.getTopCard();
@@ -195,11 +208,13 @@ public class War extends JFrame
          table.add(playerCard2);
          
          
+         
+         //PLAY WAR
          flipPlay(p1,p2,warDeck); //This is what makes eveything happen
+
 
          //Remove the 'stats' from the frame
          stats.remove(playerDeck1);
-         stats.remove(result);
          stats.remove(playerDeck2);
          
          
@@ -280,10 +295,10 @@ public class War extends JFrame
          stats.remove(result);
          result = new JLabel("War!!!",SwingConstants.CENTER);
          result.setFont(result.getFont().deriveFont(13.0f)); //Format the name/winner
-         while(!warDeck.isEmpty())//While wardeck is not empty
-         {
-            compare(pl1,pl2,warDeck); 
-         }
+         // while(!warDeck.isEmpty())//While wardeck is not empty
+//          {
+//             compare(pl1,pl2,warDeck); 
+//          }
       }    
    }//End Compare
    
