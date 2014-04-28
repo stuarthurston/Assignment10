@@ -32,7 +32,11 @@ public class War extends JFrame
       private Deck deck;
       private ArrayList<Card> warDeck;
       
+      //Player
       private Player p1,p2;
+      
+      //Card
+      private Card player1,player2;
       
       //Card Images
       // private	ImageIcon cardback = new ImageIcon("Images/b1fv.png");
@@ -159,69 +163,53 @@ public class War extends JFrame
          //Add top to the main panel
          panel.add(top, BorderLayout.PAGE_START);
          
-         // playerCard1 = new JLabel();
-//          playerCard2 = new JLabel();
+         playerCard1 = new JLabel();
+         playerCard2 = new JLabel();
          
          pack();
       
       }
-      //End
+      //End Begin
    
    class flipCard implements ActionListener
    {
       public void actionPerformed(ActionEvent e)
       {
-         ImageIcon y = new ImageIcon("bigImages/2d.jpg");
-         JLabel playerCard1 = new JLabel(y);
-         JLabel playerCard2 = new JLabel(y);
-         
-         // table.remove(back);
-//          table.remove(back2);
+         //Remove the two players cards
          table.remove(playerCard1);
+         table.remove(playerCard2);
+         
+         table.remove(back);
+         table.remove(back2);
+         //Display the card that is being compared (played)
+         player1 = p1.getTopCard();
+         player2 = p2.getTopCard();
+         playerCard1 = displayCardFace(player1);
+	      playerCard2 = displayCardFace(player2);
+
+         
+         
+         
+         
          table.add(playerCard1);
+         table.add(middle);
+         table.add(playerCard2);
          
-//          table.add(middle);
-//          table.add(playerCard2);
-
-         // table.remove(playerCard1);
-//          table.remove(playerCard2);
          
-         // panel.add(table);
-         panel.remove(table);
-         
-         panel.add(table);
-         
-         flipPlay(p1,p2,warDeck);
-         flipPlay(p1,p2,warDeck);
-         flipPlay(p1,p2,warDeck);
-         flipPlay(p1,p2,warDeck);
-         flipPlay(p1,p2,warDeck);
-         flipPlay(p1,p2,warDeck);
-         flipPlay(p1,p2,warDeck);
-         flipPlay(p1,p2,warDeck);
-         flipPlay(p1,p2,warDeck);
-         flipPlay(p1,p2,warDeck);
-         flipPlay(p1,p2,warDeck);
-         flipPlay(p1,p2,warDeck); 
-   
-         System.out.println("Player1");
-         for(int i=0;i<15;i++)
-         {
-            System.out.println(p1.flip2());
-         }
-
-         System.out.println("Player2");
-         System.out.println(p2.flip2());
-         System.out.println(p2.flip2());
+         flipPlay(p1,p2,warDeck); //This is what makes eveything happen
      
-
-
-
-
-
-
          
+      
+
+
+         top.remove(stats);
+         playerDeck1 = new JLabel("Player 1's Deck: " + p1.totalCards(),SwingConstants.CENTER);
+         playerDeck2 = new JLabel("Player 2's Deck: " + p2.totalCards(),SwingConstants.CENTER);
          
+         stats.add(playerDeck1);
+         // stats.add(result);
+         stats.add(playerDeck2); 
+         top.add(stats);
          pack();         
       }
       
@@ -295,7 +283,7 @@ public class War extends JFrame
       {
 
 	  	String ext = ".jpg";
-      String pfx = "bigImages\"";
+      String pfx = "bigImages\\";
 	  	ImageIcon image = new ImageIcon(pfx + card.toString() + ext);
 	  	JLabel label = new JLabel(image);
 
