@@ -10,7 +10,7 @@ public class Card
                             CLUBS = 3;
     // ranks
     // Cards 2 through 9 have face value
-    public final static int ACE = 1,          
+    public final static int ACE = 14, //Ace is higer than everything else           
                             JACK = 11,        
                             QUEEN = 12,       
                             KING = 13;
@@ -71,10 +71,10 @@ public class Card
             // Return a String representing the card's suit.
             // (If the card's suit is invalid, "??" is returned.)
         switch ( suit ) {
-           case SPADES:   return "Spades";
-           case HEARTS:   return "Hearts";
-           case DIAMONDS: return "Diamonds";
-           case CLUBS:    return "Clubs";
+           case SPADES:   return "s";
+           case HEARTS:   return "h";
+           case DIAMONDS: return "d";
+           case CLUBS:    return "c";
            default:       return "Invalid";
         }
     }
@@ -85,7 +85,6 @@ public class Card
    public String getRankAsString() 
    {
         switch ( rank ) {
-           case 1:   return "Ace";
            case 2:   return "2";
            case 3:   return "3";
            case 4:   return "4";
@@ -95,9 +94,10 @@ public class Card
            case 8:   return "8";
            case 9:   return "9";
            case 10:  return "10";
-           case 11:  return "Jack";
-           case 12:  return "Queen";
-           case 13:  return "King";
+           case 11:  return "j";
+           case 12:  return "q";
+           case 13:  return "k";
+           case 14:   return "a";
            default:  return "??";
         }
     }
@@ -108,7 +108,7 @@ public class Card
 
     public String toString() 
     {
-        return getRankAsString() + " of " + getSuitAsString();
+        return getSuitAsString();
     }
     
    /**
