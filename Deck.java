@@ -24,7 +24,7 @@ public class Deck
 //       deck.add(new Card(2,1));
 //       deck.add(new Card(1,1));
 //       deck.add(new Card(2,1));
-      for (int r = Card.ACE; r<=Card.KING;r++)
+      for (int r = 2; r<=Card.ACE;r++)
       {
          for (int s=Card.SPADES;s<=Card.CLUBS;s++)
          {
