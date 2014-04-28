@@ -14,7 +14,7 @@ public class Deck extends ArrayList<Card>
    {
       deck = new ArrayList<Card>();
       
-//       deck.add(new Card(1,2));
+      // deck.add(new Card(1,2));
 //       deck.add(new Card(2,2));
 //       deck.add(new Card(2,3));
 //       deck.add(new Card(1,1));
