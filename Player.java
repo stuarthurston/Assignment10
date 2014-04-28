@@ -37,6 +37,15 @@ public class Player
    
    public Card getTopCard() //Get the card off the top, DO NOT Delete
    {
+      if(getPlayDeck() == 0)
+         {
+            moveCards();
+         }
+         
+         if(getPlayDeck() == 0)
+         {
+            moveCards();
+         }
       Card topCard;
       topCard = playDeck.get(0);
       return topCard;
@@ -73,12 +82,12 @@ public class Player
    
    public void moveCards()//This will switch all the cards from the return deck, to the play deck. Clear return.
    {
+    returnDeck.shuffle();
     for(Card object : returnDeck)
     {
       
       playDeck.add(object);
     }
-    playDeck.shuffle();
     returnDeck.clear();  
    } 
 }
