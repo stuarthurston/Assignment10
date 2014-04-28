@@ -1,7 +1,7 @@
 import java.util.Random;
 import java.util.ArrayList;
 
-public class Deck 
+public class Deck extends ArrayList<Card>
 {
    final int CARDS_IN_DECK = 52;
 
