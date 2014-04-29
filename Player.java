@@ -1,10 +1,10 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //Stuart Thurston                                                                            ///
 //CS 110                                                                                     ///
-//Assignment 4  -- 2/14/14                                                                   ///
-//Challenge problem 8                                                                        ///
-//Roll dice trying to get as close to maxNumber, without going over. Will use the Die class  /// 
-//Uses a while loop, and if statements                                                       ///
+//Assignment 10  -- 4/28/14                                                                  ///
+//WarGame - Player                                                                           ///
+//This class designs a Player object. Creates two Decks (ArrayList), one to hold the current /// 
+//hand, and one the return hand. Methods all access to cards.                                ///
 ////////////////////////////////////////////////////////////////////////////////////////////////
 import java.util.ArrayList;
 
@@ -12,22 +12,35 @@ import java.util.ArrayList;
 public class Player
 {
    //Create two decks, one to hold the players cards, the other to hold the cards won.
-   // ArrayList<Card> playDeck  = new ArrayList<Card>(); 
-//    ArrayList<Card> returnDeck = new ArrayList<Card>();
    Deck playDeck  = new Deck(); 
    Deck returnDeck = new Deck();
    
-   public void addPlay(Card inCard) //Add cards to the playDeck
+   
+   /**
+      Add a card to the playDeck - the active deck 
+      @param inCard a Card object
+   */
+   public void addPlay(Card inCard)
    {
       playDeck.add(inCard);
    }
    
-   public void addReturn(Card inCard) //Add cards to the returnDeck
+   
+   /**
+      Add a card to the addReturn - the won deck 
+      @param inCard a Card object
+   */
+   public void addReturn(Card inCard) 
    {
       returnDeck.add(inCard);
    }
    
-   public Card flip() //Get the card off the top of the "deck", and remove
+   
+   /**
+      Get the top card off of the deck and remove from the deck
+      @return topCard a Card object
+   */
+   public Card flip() 
    {
       Card topCard = null;
       
@@ -45,6 +58,11 @@ public class Player
       return topCard;
    }  
    
+   
+   /**
+      Get the top card off of the deck and remove from the deck
+      @return topCard a Card object
+   */
    public Card getTopCard() //Get the card off the top, DO NOT Delete
    {
       Card topCard = null;
@@ -64,28 +82,31 @@ public class Player
       return topCard;
    }
    
-   public int getPlayDeck() //Get the size of the play deck
+   
+   /**
+      Get the the size of the active (play) deck, return an int
+      @return playDeck.size() The size of the active deck
+   */
+   public int getPlayDeck()
    {
       return playDeck.size();
    }
    
-   public int getReturnDeck() //Get the size of the return deck
+   
+   /**
+      Get the the size of the return deck, return an int
+      @return returnDeck.size() The size of the return deck
+   */
+   public int getReturnDeck()
    {
       return returnDeck.size();
    }
    
-   //////This will be delatead
-   public Card flip2()  //Get the card off the top of the "deck"
-   {
-      Card topCard2;
-      
-      topCard2 = returnDeck.get(0); //Get the card at element 0, and then delete it.
-      returnDeck.remove(0);
-      
-      
-      return topCard2;
-   } 
    
+   /**
+      Get the amount of cards in both the return and play deck
+      @return totalCount The amount of cards a player has
+   */   
    public int totalCards()
    {
       int totalCount = playDeck.size() + returnDeck.size();
@@ -93,7 +114,12 @@ public class Player
       return totalCount;
    }
    
-   public void moveCards()//This will switch all the cards from the return deck, to the play deck. Clear return.
+   
+   /**
+      Move cards from the return deck to the playdeck.
+      Shuffle the cards, move, and then clear the return deck
+   */ 
+   public void moveCards()
    {
     returnDeck.shuffle();
     for(Card object : returnDeck)
