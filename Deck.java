@@ -1,15 +1,35 @@
+////////////////////////////////////////////////////////////////////////////////////////////////
+//Stuart Thurston                                                                            ///
+//CS 110                                                                                     ///
+//Assignment 10  -- 4/28/14                                                                  ///
+//WarGame - Deck                                                                             ///
+//This class creates a Deck. Has a way to remove cards from decks as well as shuffle the     ///
+//cards. Uses ArrayLists                                                                     ///
+////////////////////////////////////////////////////////////////////////////////////////////////
+
 import java.util.Random;
 import java.util.ArrayList;
 
 public class Deck extends ArrayList<Card>
 {
-   final int CARDS_IN_DECK = 52;
 
    ArrayList<Card> deck;
+   /**
+      Constructor
+      call freshDeck()
+   */
    public Deck()
    {
             freshDeck();
    }
+   
+   
+   /**
+      freshDeck
+      create a new ArrayList named deck, and use the Card class
+      to add 52 Cards to the deck.
+      call freshDeck()
+   */
    public void freshDeck()
    {
       deck = new ArrayList<Card>();
@@ -33,16 +53,36 @@ public class Deck extends ArrayList<Card>
       }
      
    
-   }
+   }//End freshDeck
+   
+   
+   /**
+      dealCard
+      get and rremove the first card from the deck
+      @return c a Card
+   */
    public Card dealCard()
    {
       Card c = deck.remove(0);  //  remove it (returns removed object)
       return c;
    }
+   
+   
+   /**
+      cardsRemaining
+      get and return the size of the deck
+      @return deck.size size of the deck
+   */
    public int cardsRemaining()
    {  
       return deck.size();
    }
+   
+   
+   /**
+      shuffle
+      shuffle the deck, using a random number  
+   */
    public void shuffle()
    {
       int randNum;
@@ -56,25 +96,16 @@ public class Deck extends ArrayList<Card>
          deck.set(randNum,temp);
       }      
    }
+   
+   
+   /**
+      isEmpty
+      Determine if the deck is empty
+      @return boolean
+   */
    public boolean isEmpty()
    {
       return (deck.size() == 0);
-   }
-
-   public static Card highCard(Card...cards)
-   {
-   
-      Card high = cards[0];
-      for (int i=1;i<cards.length;i++)
-      {
-         if (cards[i].getRank() > high.getRank())
-         {
-         
-            high = cards[i];
-         }
-      }
-      return high;
-   
    }
 }
 
