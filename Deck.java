@@ -59,7 +59,7 @@ public class Deck extends ArrayList<Card>
    /**
       dealCard
       get and rremove the first card from the deck
-      @return c a Card
+      @return Card a Card
    */
    public Card dealCard()
    {
@@ -71,7 +71,7 @@ public class Deck extends ArrayList<Card>
    /**
       cardsRemaining
       get and return the size of the deck
-      @return deck.size size of the deck
+      @return int size of the deck
    */
    public int cardsRemaining()
    {  
