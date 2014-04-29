@@ -3,7 +3,7 @@
 //CS 110                                                                                     ///
 //Assignment 10  -- 4/28/14                                                                  ///
 //WarGame - Player                                                                           ///
-//This class designs a Player object. Creates two Decks (ArrayList), one to hold the current /// 
+//This class designs a Player object. Creates two Decks (ArrayList), one to hold the current ///
 //hand, and one the return hand. Methods all access to cards.                                ///
 ////////////////////////////////////////////////////////////////////////////////////////////////
 import java.util.ArrayList;

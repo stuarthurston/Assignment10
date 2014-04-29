@@ -1,3 +1,11 @@
+////////////////////////////////////////////////////////////////////////////////////////////////
+//Stuart Thurston                                                                            ///
+//CS 110                                                                                     ///
+//Assignment 10  -- 4/28/14                                                                  ///
+//WarGame - War                                                                              ///
+//This creates a GUI to play WAR. Has methods to flip cards, as well as display the correct  ///
+//results and the winner                                                                     ///
+////////////////////////////////////////////////////////////////////////////////////////////////
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
@@ -56,6 +64,11 @@ public class War extends JFrame
       private final int WINDOW_WIDTH = 400;
       private final int WINDOW_HEIGHT = 300;
    
+   
+   /**
+      Constructor
+      Create the initial interface, buttons to start the game
+   */
    public War()
    {
       //Create the frame
@@ -104,8 +117,13 @@ public class War extends JFrame
       this.getContentPane().add(panel);
       pack();
       setVisible(true);
-   }
-   
+   }//End War
+
+
+   /**
+      ActionListener
+      Exit the program
+   */
    class exitGame implements ActionListener 
    {
       public void actionPerformed(ActionEvent e) 
@@ -114,8 +132,25 @@ public class War extends JFrame
       }
    }
    
- 
-     
+   
+   /**
+      ActionListener
+      resetGame. Restart the game, remove everything, and add it back
+   */ 
+   class resetGame implements ActionListener 
+   {
+      public void actionPerformed(ActionEvent e) 
+      {
+         War.this.dispose();
+         new War();
+      }
+   }    
+  
+  
+  /**
+      ActionListener
+      Create a Deck and two new players, change the buttons to flip/quit
+  */ 
   class beginGame implements ActionListener
   {    
       public void actionPerformed(ActionEvent e)
@@ -171,10 +206,15 @@ public class War extends JFrame
          
          
          pack();
-      
-      }//End Begin
+      }      
+   }//End Begin
    
    
+   /**
+      ActionListener
+      play the game. Make the cards in the GUI represent the cards that are being
+      flipped and compared. If there is a winner, change the GUI to represent that.
+  */
    class flipCard implements ActionListener
    {
       public void actionPerformed(ActionEvent e)
@@ -205,8 +245,7 @@ public class War extends JFrame
             
             //Add the items back into the bottom
             bottom.add(again, BorderLayout.CENTER);
-            again.addActionListener(new resetGame()); 
-
+            again.addActionListener(new resetGame()); //Connect the button to the action
             bottom.add(name, BorderLayout.WEST);
             bottom.add(quit, BorderLayout.EAST);
             
@@ -286,18 +325,16 @@ public class War extends JFrame
       }
       
    }//End FlipCard
-    
-   class resetGame implements ActionListener 
-   {
-      public void actionPerformed(ActionEvent e) 
-      {
-         War.this.dispose();
-         new War();
-      }
-   }  
-      
-   } 
    
+
+   /**
+      compare
+      Use the player flipCard methods to access the cards in the decks
+      compare them, and update the decks accordingly. Update the result with the winner
+      @param pl1 Player 1, all access to the decks
+      @param pl2 Player 2, allow access to the decks
+      @param warDeck the deck that is used to deal with the wars
+   */
    public  void compare(Player pl1, Player pl2, ArrayList<Card> warDeck) //Compare two cards, return array List
    {
       Card card1 = pl1.flip();
@@ -347,10 +384,10 @@ public class War extends JFrame
          warDeck.add(card2);
          warDeck.add(pl1.flip());
          warDeck.add(pl2.flip());
-         warDeck.add(pl1.flip());
-         warDeck.add(pl2.flip());
-         warDeck.add(pl1.flip());
-         warDeck.add(pl2.flip());
+//          warDeck.add(pl1.flip());    THIS GAME WOULD BE 
+//          warDeck.add(pl2.flip());    BETTER IF WE WERE
+//          warDeck.add(pl1.flip());    ABLE TO ADD 3 CARDS
+//          warDeck.add(pl2.flip());    FOR A WAR
          
          //Display the winner
          stats.remove(result);
@@ -360,7 +397,16 @@ public class War extends JFrame
       }    
    }//End Compare
    
-   public  void flipPlay(Player p1, Player p2, ArrayList<Card> warDeck)
+   
+   /**
+      flipPlay
+      Check to make sure the decks aren't empty, if they are, move the cards
+      and then call the compare method
+      @param p1 Player 1, all access to the decks
+      @param p2 Player 2, allow access to the decks
+      @param warDeck the deck that is used to deal with the wars
+   */
+   public void flipPlay(Player p1, Player p2, ArrayList<Card> warDeck)
    {
          if(p1.getPlayDeck() == 0)
          {
@@ -380,9 +426,16 @@ public class War extends JFrame
         
    }//EndFlipPlay  
    
-      public JLabel displayCardFace(Card card)
-      {
-
+   
+   /**
+      displayCardFace
+      Get the name of the card, and match with the correct image.
+      Add the image to a JLable, and return
+      @param card A card object
+      @return label JLable, with the card icon.
+   */
+   public JLabel displayCardFace(Card card)
+   {
 	  	String ext = ".jpg";
       String pfx = "bigImages\\";
 	  	ImageIcon image = new ImageIcon(pfx + card.toString() + ext);
@@ -392,6 +445,10 @@ public class War extends JFrame
 	  }
    
    
+   /**
+      war
+      Create and run a new instance of the War class, main method
+   */
    public static void main (String[] args)
    {
       War my = new War();
