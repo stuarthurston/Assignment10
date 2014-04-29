@@ -1,4 +1,11 @@
-
+////////////////////////////////////////////////////////////////////////////////////////////////
+//Stuart Thurston                                                                            ///
+//CS 110                                                                                     ///
+//Assignment 10  -- 4/28/14                                                                  ///
+//WarGame - Card                                                                             ///
+//This class creates a card. Has methods to access the cards class and suit, both as an int  ///
+//and as a string.                                                                           ///
+////////////////////////////////////////////////////////////////////////////////////////////////
 
 public class Card 
 {     
@@ -20,21 +27,25 @@ public class Card
                               // SPADES, HEARTS, DIAMONDS, CLUBS.
                               
     private int rank;  // The rank of this card, from 1 to 13.
+   
                              
    /**
-   * Creates a new playing card.
-   * @param suit the suit value of this card.
-   * @param rank the rank rank of this card.
+      Creates a new playing card.
+      @param suit the suit value of this card.
+      @param rank the rank rank of this card.
    */
     public Card(int rank, int suit) 
     {
         this.rank = rank;
         this.suit = suit;
     }
+   
+   
+    
     
    /**
-   * Creates a new playing card as exact copy of otherCard
-   * @param otherCar the card to be copied
+      Creates a new playing card as exact copy of otherCard
+      @param otherCar the card to be copied
    */
     public Card(Card otherCard) 
     {
@@ -42,29 +53,37 @@ public class Card
          this.suit = otherCard.suit;
     }
     
+    
+    
+    
    /**
-   * Returns the suit of the card.
-   * @return a Suit constant representing the suit value of the card.
+      Returns the suit of the card.
+      @return a Suit constant representing the suit value of the card.
    */
-  
     public int getSuit() 
     {
       return suit;
     }
+    
+    
+    
+    
    /**
-   * Returns the rank of the card.
-   * @return a Rank constant representing the rank value of the card.
+       Returns the rank of the card.
+      @return a Rank constant representing the rank value of the card.
    */
-
     public int getRank() 
     {
             // Return the int that codes for this card's rank.
         return rank;
     }
     
+    
+    
+    
    /**
-   * Returns a description of the suit of this card.
-   * @return the suit value of the card as a string.
+      Returns a description of the suit of this card.
+      @return the suit value of the card as a string.
    */
     public String getSuitAsString() 
     {
@@ -78,9 +97,13 @@ public class Card
            default:       return "Invalid";
         }
     }
+    
+    
+    
+    
    /**
-   * Returns a description of the rank of this card.
-   * @return the rank value of the card as a string.
+      Returns a description of the rank of this card.
+      @return the rank value of the card as a string.
    */
    public String getRankAsString() 
    {
@@ -101,21 +124,27 @@ public class Card
            default:  return "??";
         }
     }
+    
+    
+    
+    
    /**
-   * Returns a description of this card.
-   * @return the name of the card.
+      Returns a description of this card.
+      @return the name of the card.
    */
-
     public String toString() 
     {
         return getRankAsString() + getSuitAsString();
     }
     
+    
+    
+    
    /**
-   * Compares two cards to determine if they have the same value.
-   * @param card the other card
-   * @return true if the two cards have the same rank and suitvalues,
-   * falseotherwise.
+      Compares two cards to determine if they have the same value.
+      @param card the other card
+      @return true if the two cards have the same rank and suitvalues,
+      falseotherwise.
    */
    public boolean equals(Card otherCard ) 
    {

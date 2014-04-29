@@ -65,6 +65,8 @@ public class War extends JFrame
       private final int WINDOW_HEIGHT = 300;
    
    
+   
+   
    /**
       Constructor
       Create the initial interface, buttons to start the game
@@ -120,6 +122,8 @@ public class War extends JFrame
    }//End War
 
 
+
+
    /**
       ActionListener
       Exit the program
@@ -131,6 +135,8 @@ public class War extends JFrame
          System.exit(0);
       }
    }
+   
+   
    
    
    /**
@@ -145,6 +151,8 @@ public class War extends JFrame
          new War();
       }
    }    
+  
+  
   
   
   /**
@@ -208,6 +216,8 @@ public class War extends JFrame
          pack();
       }      
    }//End Begin
+   
+   
    
    
    /**
@@ -327,6 +337,8 @@ public class War extends JFrame
    }//End FlipCard
    
 
+
+
    /**
       compare
       Use the player flipCard methods to access the cards in the decks
@@ -398,6 +410,8 @@ public class War extends JFrame
    }//End Compare
    
    
+   
+   
    /**
       flipPlay
       Check to make sure the decks aren't empty, if they are, move the cards
@@ -427,6 +441,8 @@ public class War extends JFrame
    }//EndFlipPlay  
    
    
+   
+   
    /**
       displayCardFace
       Get the name of the card, and match with the correct image.
@@ -443,6 +459,8 @@ public class War extends JFrame
 
 	  	return label;
 	  }
+   
+   
    
    
    /**
