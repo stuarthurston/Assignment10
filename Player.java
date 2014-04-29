@@ -38,7 +38,7 @@ public class Player
    
    /**
       Get the top card off of the deck and remove from the deck
-      @return topCard a Card object
+      @return Card topCard a Card object
    */
    public Card flip() 
    {
@@ -61,7 +61,7 @@ public class Player
    
    /**
       Get the top card off of the deck and remove from the deck
-      @return topCard a Card object
+      @return Card topCard a Card object
    */
    public Card getTopCard() //Get the card off the top, DO NOT Delete
    {
@@ -85,7 +85,7 @@ public class Player
    
    /**
       Get the the size of the active (play) deck, return an int
-      @return playDeck.size() The size of the active deck
+      @return int playDeck.size() The size of the active deck
    */
    public int getPlayDeck()
    {
@@ -95,7 +95,7 @@ public class Player
    
    /**
       Get the the size of the return deck, return an int
-      @return returnDeck.size() The size of the return deck
+      @return int returnDeck.size() The size of the return deck
    */
    public int getReturnDeck()
    {
@@ -105,7 +105,7 @@ public class Player
    
    /**
       Get the amount of cards in both the return and play deck
-      @return totalCount The amount of cards a player has
+      @return int totalCount The amount of cards a player has
    */   
    public int totalCards()
    {

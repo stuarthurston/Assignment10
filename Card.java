@@ -58,7 +58,7 @@ public class Card
     
    /**
       Returns the suit of the card.
-      @return a Suit constant representing the suit value of the card.
+      @return int Suit constant representing the suit value of the card.
    */
     public int getSuit() 
     {
@@ -70,7 +70,7 @@ public class Card
     
    /**
        Returns the rank of the card.
-      @return a Rank constant representing the rank value of the card.
+      @return int Rank constant representing the rank value of the card.
    */
     public int getRank() 
     {
@@ -83,7 +83,7 @@ public class Card
     
    /**
       Returns a description of the suit of this card.
-      @return the suit value of the card as a string.
+      @return String suit value of the card as a string.
    */
     public String getSuitAsString() 
     {
@@ -103,7 +103,7 @@ public class Card
     
    /**
       Returns a description of the rank of this card.
-      @return the rank value of the card as a string.
+      @return String the rank value of the card as a string.
    */
    public String getRankAsString() 
    {
@@ -130,7 +130,7 @@ public class Card
     
    /**
       Returns a description of this card.
-      @return the name of the card.
+      @return String the name of the card.
    */
     public String toString() 
     {
